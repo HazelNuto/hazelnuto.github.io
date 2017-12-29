@@ -13,10 +13,10 @@ photo.onload = function(e) {
 
 function outputProfile() {
     context.drawImage(photo, canvas.width / 2 - photo.width / 2, 20);
-    context.font = 25 + "px litterlover";
+    context.font = 25 + "px LitterLover";
     context.fillStyle = "lightCoral";
     context.fillText("HazelNut", canvas.width / 2 - "HazelNut".length * 10, 50 + photo.height);
-    context.font = 10 + "px litterlover";
+    context.font = 10 + "px LitterLover";
     context.fillText("from.  Hangzhou China", canvas.width / 2 - "from. Hangzhou China".length * 4, 80 + photo.height);
     context.fillText("touhou / MUG / ACMer", canvas.width / 2 - "touhou / MUG / ACMer".length * 4, 100 + photo.height);
     context.font = 10 + 'px Arial';
