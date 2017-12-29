@@ -1,0 +1,18 @@
+@font-face {
+  font-family: 'LitterLover';
+  src: url('LitterLover.woff') format('woff'),
+       url('LitterLover.ttf') format('truetype'),
+       url('LitterLover.svg#LitterLover') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'litterlover';
+  src: url('litterlover.eot');
+  src: url('litterlover.woff2') format('woff2'),
+       url('litterlover.eot?#iefix') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
