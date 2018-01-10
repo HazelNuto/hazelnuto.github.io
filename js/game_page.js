@@ -210,10 +210,13 @@ function drawGmSakura() {
 var totLen = 500, gridLen;
 var board = new Board(boardSize);
 var playTurn = true;
+var nowx = null, nowy = null;
+var clix = null, cliy = null;
 
 function updateCanvas() {
     drawGmBack();
     outputOptions(11, 0, 0, 0, 1);
+    
     gridLen = totLen / boardSize;
     /*** draw grid */
     context.globalAlpha = 0.4;
@@ -231,9 +234,20 @@ function updateCanvas() {
         context.lineTo(80 + i * gridLen, 60 + totLen);
         context.stroke();
     }
+
+
+
     /*** fill text */
     for(var i=0; i<boardSize; i++) {
         for(var j=0; j<boardSize; j++) {
+            if(i == nowx && j == nowy) {
+                context.globalAlpha = 0.25;
+                context.fillStyle = 'white';
+                context.rect(80 + j * gridLen, 60 + i * gridLen,gridLen, gridLen);
+                context.fill();
+                context.globalAlpha = 1.0;
+                context.fillStyle = 'black';
+            }
             if(board.board[i][j] === 1) {
                 context.fillText('--', 80 + j * gridLen + gridLen / 3,
                 60 + (i + 1) * gridLen - gridLen / 3);
@@ -244,7 +258,7 @@ function updateCanvas() {
                 context.fillText('+', 80 + j * gridLen + gridLen / 3,
                 60 + (i + 1) * gridLen - gridLen / 3);
             } else {
-                //context.globalAlpha = 0.7;
+                context.globalAlpha = 0.85;
                 context.drawImage(boardBackground[boardBackId], 80 + j * gridLen,
                 60 + i * gridLen, gridLen, gridLen, 80 + j * gridLen, 60 + i * gridLen,
                 gridLen, gridLen);
@@ -254,17 +268,26 @@ function updateCanvas() {
     }
 }
 
-function clickChess(loc) {
+function clickChess(loc, clicked) {
     if(!playTurn) return ;
+    nowx = nowy = -1;
     for(var i=0; i<boardSize; i++) {
         for(var j=0; j<boardSize; j++) {
             if(loc.x > 80 + j * gridLen && loc.x < 80 + (j + 1) * gridLen && loc.y > 60 + i * gridLen && loc.y < 60 + (i + 1) * gridLen) {
-                if(board.board[i][j] === 0) return ;
-                board.select(i ,j);
-                updateCanvas();
-                window.setTimeout('comTurn()', 500);
-                playTurn = false;
-                break;
+                if(clicked) {
+                    if(board.board[i][j] === 0) return ;
+                    clix = i; cliy = j;
+                    board.select(i ,j);
+                    updateCanvas();
+                    window.setTimeout('comTurn()', 1000);
+                    playTurn = false;
+                    break;
+                }else {
+                    if(board.board[i][j] === 0) return ;
+                    nowx = i; nowy = j;
+                    updateCanvas();
+                    break;
+                }
             }
         }
     }

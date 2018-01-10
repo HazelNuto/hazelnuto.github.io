@@ -71,6 +71,8 @@ function drawOpSakura() {
 
 function outputOptions(Index, ques, moveon, selected, back) {
     var empha = false;
+
+    
     if(moveon) empha = true;
     if(selected) {
         empha = true;

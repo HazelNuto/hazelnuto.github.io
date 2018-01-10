@@ -221,6 +221,8 @@ canvas.onmousemove = function (e) {
                 timer = requestAnimationFrame(animateGmSakura);
             }
             gm_back = false;
+        } else if(loc.x > 80 && loc.x < 80 + totLen && loc.y > 60 && loc.y < 60 + totLen) {
+            clickChess(loc, false);
         } else {
             gm_back = true;
             gm_backAppear = op_coordi[22] - 50;
@@ -381,7 +383,7 @@ canvas.onmousedown = function (e) {
             timer = requestAnimationFrame(animateGmReturn);
 
         } else if(loc.x > 80 && loc.x < 80 + totLen && loc.y > 60 && loc.y < 60 + totLen) {
-            clickChess(loc);
+            clickChess(loc, true);
         }
     } else if(INDEX === 3) {
         /* ----> Help <---- */
