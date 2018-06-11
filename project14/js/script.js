@@ -4,6 +4,11 @@ var ms_img = document.getElementById("mission_img"),
 
 function update() {
     var wd_width = window.innerWidth;
+    document.getElementsByClassName("header")[0].style.width = wd_width;
+    document.getElementsByClassName("nav")[0].style.width = wd_width;
+    document.getElementsByClassName("banner")[0].style.width = wd_width;
+    document.getElementsByClassName("mission")[0].style.width = wd_width;
+    document.getElementsByClassName("footer")[0].style.width = wd_width;
     document.getElementsByClassName("header")[0].style.height = wd_width / 30 + 50 + "px";
     document.getElementsByClassName("nav")[0].style.height = wd_width / 30 + 50 + "px";
     document.getElementsByClassName("nav")[0].style.lineHeight = wd_width / 30 + 50 + "px";
@@ -16,14 +21,14 @@ function update() {
     document.getElementsByClassName("banner-info")[0].style.top = wd_width / 7 + 180 + "px";
     document.getElementsByClassName("banner-info")[0].style.width = wd_width / 6 + 220 + "px";
     if(wd_width >= 640) {
-        document.getElementsByClassName("mission")[0].style.height = wd_width / 24 + 500 + "px";
+        document.getElementsByClassName("mission")[0].style.height = Math.max(wd_width / 2 / 700 * 464 + 80, 550) + "px";
         document.getElementsByClassName("nav")[0].style.visibility = "visible";
         document.getElementById("burger").style.visibility = "hidden";
         ms_left[0].style.float = "left";
         ms_right[0].style.float = "right";
         ms_left[0].style.width = wd_width / 2 - 20 + "px";
-        ms_left[0].style.height = (wd_width / 2 - 100) * 0.8 + "px";
-        ms_right[0].style.width = wd_width / 2 - 20 + "px";
+        ms_left[0].style.height = wd_width / 2 / 700 * 464 + "px";
+        ms_right[0].style.width = wd_width / 2 - 30 + "px";
         ms_img.style.width = (wd_width / 2 - 50) + "px";
         ms_right[0].style.position = "";
     }
