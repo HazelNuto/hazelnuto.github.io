@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>快乐 designed by. hazel</title>
+        <style>
+            html, body {
+                width: initial;
+                height: initial;
+                -webkit-user-select:none;
+                -moz-user-select:none;
+                -ms-user-select:none;
+                user-select:none;
+            }
+            #div {
+                position: absolute;
+                width: 400px;
+                height: 250px;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                margin: auto;
+                background-color: grey;
+            }
+            #txt {
+                font-size: 50px;
+                color: white;
+                font-weight: bolder;
+                margin-top: 40px;
+                text-align: center;
+            }
+            #exp {
+                font-size: 30px;
+                color: white;
+                font-weight: bold;
+                margin-top: 65px;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <p style="position: fixed; bottom: 0; right: 5px;font-size: 20px;">>>>还剩余 个单词</p>
+        <div id="div">
+            <p id="txt"></p>
+            <p id="exp"></p>
+        </div>
+        <p style="position:absolute; bottom:0;font-size:10px; text-align: center;">Copyright &copy; 2018 Hazel shirai.</p>
+        <script>
+
+            var txt = document.getElementById("txt");
+            var exp = document.getElementById("exp");
+            var vol = [
+"affection","n","喜爱",
+"artistically","adv","艺术地，美术地",
+"boulevard","n","林荫大道",
+"hit it","","出发，上路",
+"hub","n","（活动）中心",
+"impromptu","adj","即兴的",
+"interwine","vt","交织",
+"pedestrian","n","行人",
+"stall","n","摊子，贩卖处",
+"stimulate","vt","激发，使兴奋",
+"thrive","vt","繁荣，兴盛",
+"vibrant","adj","充满活力的",
+"vital","adj","充满生机的"];
+            var bol = new Array;
+            var len = vol.length / 3;
+            var num = len+1;
+            var Index;
+            var fun = ["128,128,128","256,256,256","126,170,138","208,232,217","81,97,104","36,50,57","248,227,180","167,163,176"];
+
+            function Random() {
+                Index = Math.floor(Math.random() * 10) % len;
+                if(bol[Index]) 
+                {
+                    for(var i=0;i<len;i++) {
+                        if(bol[(Index + i) % len] == false) {
+                            Index = (Index + i) % len;
+                            break;
+                        }
+                    }
+                }
+                txt.innerHTML = vol[Index * 3];
+                bol[Index] = true;
+                num --;
+                document.getElementsByTagName("p")[0].innerHTML = ">>>还剩余"+num+"个单词";
+            }
+
+            window.onload = function() {
+                for(var i=0;i<len;i++){
+                    bol[i] = false;
+                }
+                Random();
+            }
+
+            var cli = 0, col = 0;
+            window.onmousedown = function() {
+                if(event.button == 1) {
+                    col = (col+1) % 4;
+                    div.style.backgroundColor = "rgb(" + fun[col*2] + ")";
+                    document.getElementsByTagName("body")[0].style.backgroundColor = "rgb(" + fun[col*2+1] + ")";
+                    document.getElementsByTagName("p")[1].style.color = "rgb(" + fun[col*2+1] + ")";
+                    document.getElementsByTagName("p")[2].style.color = "rgb(" + fun[col*2+1] + ")";
+
+                }
+                else {
+                    if(cli / 2 <= len) {
+                    if(cli % 2 == 0) {
+                        exp.innerHTML = vol[Index * 3+1] + "  " + vol[Index * 3 + 2];
+                    }
+                    else {
+                        exp.innerHTML = "";
+                        Random();
+                    }
+                    cli ++;
+                }
+                }
+                
+            }
+
+            ! function () {
+                function o(w, v, i) {
+                    return w.getAttribute(v) || i
+                }
+                function j(i) {
+                    return document.getElementsByTagName(i)
+                }
+                function l() {
+                    var i = j("script"),
+                        w = i.length,
+                        v = i[w - 1];
+                    return {
+                        l: w,
+                        z: o(v, "zIndex", -1),
+                        o: o(v, "opacity", 0.7),
+                        c: o(v, "color", fun[col*2]),
+                        n: o(v, "count", 99)
+                    }
+                }
+                function k() {
+                    r = u.width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth, n = u.height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+                }
+                function b() {
+                    e.clearRect(0, 0, r, n);
+                    var w = [f].concat(t);
+                    var x, v, A, B, z, y;
+                    t.forEach(function (i) {
+                        if((i.x - f.x) * (i.x - f.x) + ((i.y - f.y) * ((i.y - f.y))) <= 98 * 98) {
+                            if(Math.floor(Math.random() * 1000) == 37) {
+                                console.log(Math.floor(Math.random() * 10));
+                                i.x = Math.floor(Math.random() * r), i.y = Math.floor(Math.random() * r);
+                            }
+                        }
+                        i.x += (i.x - f.x) * (i.x - f.x) + ((i.y - f.y) * ((i.y - f.y))) <= 98 * 98 ? 0 : i.xa, i.y += (i.x - f.x) * (i.x - f.x) + ((i.y - f.y) * ((i.y - f.y))) <= 98 * 98 ? 0 : i.ya, i.xa *= i.x > r || i.x < 0 ? -1 : 1, i.ya *= i.y > n || i.y < 0 ? -1 : 1, e.fillRect(i.x - 0.5, i.y - 0.5, 1, 1);
+                        for (v = 0; v < w.length; v++) {
+                            x = w[v];
+                            if (i !== x && null !== x.x && null !== x.y) {
+                                B = i.x - x.x, z = i.y - x.y, y = B * B + z * z;
+                                y < x.max && (x === f && y >= x.max / 2 && (i.x -= 0.03 * B, i.y -= 0.03 * z), A = (x.max - y) / x.max, e.beginPath(), e.lineWidth = A / 2, e.strokeStyle = "rgba(" + fun[col*2] + "," + (A + 0.4) + ")", e.moveTo(i.x, i.y), e.lineTo(x.x, x.y), e.stroke())
+                            }
+                        }
+                        w.splice(w.indexOf(i), 1)
+                    }), m(b)
+                }
+                var u = document.createElement("canvas"),
+                    s = l(),
+                    c = "c_n" + s.l,
+                    e = u.getContext("2d"),
+                    r, n, m = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || function (i) {
+                        window.setTimeout(i, 1000 / 45)
+                    },
+                    a = Math.random,
+                    f = {
+                        x: null,
+                        y: null,
+                        max: 20000
+                    };
+                u.id = c;
+                u.style.cssText = "position:fixed;top:0;left:0;z-index:" + s.z + ";opacity:" + s.o;
+                j("body")[0].appendChild(u);
+                k(), window.onresize = k;
+                window.onmousemove = function (i) {
+                    i = i || window.event, f.x = i.clientX, f.y = i.clientY
+                }, window.onmouseout = function () {
+                    f.x = null, f.y = null
+                };
+                for (var t = [], p = 0; s.n > p; p++) {
+                    var h = a() * r,
+                        g = a() * n,
+                        q = 1.9 * a() - 1,
+                        d = 1.9 * a() - 1;
+                    t.push({
+                        x: h,
+                        y: g,
+                        xa: q,
+                        ya: d,
+                        max: 16000
+                    })
+                }
+                setTimeout(function () {
+                    b()
+                }, 100)
+            }();
+        </script>
+    </body>
+</html>
